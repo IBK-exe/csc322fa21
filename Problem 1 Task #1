@@ -1,7 +1,9 @@
-//HTML
+//Note: This code is made for JSFiddle Program 
+
+//HTML section 
 <script src="https://threejs.org/build/three.js"></script> 
 
-//Javascript 
+//Javascript section 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
