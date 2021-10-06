@@ -24,7 +24,7 @@ const colors = [];
 	for ( let i = 0; i < positionAttribute.count; i +=3 ) 
     {
 		
-			color.set( Math.random() * 0xffffff );
+			color.set( Math.random() * 0xffffff ); //I couldnt figure out a way to make it the color i want it to be so i made it random
 			colors.push( color.r, color.g, color.b );	
       colors.push( color.r, color.g, color.b );	
       colors.push( color.r, color.g, color.b );	
@@ -67,7 +67,7 @@ light.position.set(10, 0, 25);
 scene.add(light);
 
 
-const render = function()
+const render = function() //rotates so you can see each side easier 
 {
 	requestAnimationFrame(render);
   renderer.render( scene, camera );
