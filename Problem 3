@@ -1,8 +1,8 @@
-//HTML
+//HTML:
 <script src="https://threejs.org/build/three.js"></script>
 
 
-//Javascript
+//Javascript:
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
