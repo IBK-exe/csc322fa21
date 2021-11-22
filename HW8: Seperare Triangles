@@ -1,0 +1,93 @@
+import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r132/build/three.module.js';
+
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js';
+
+var renderer = new THREE.WebGLRenderer();
+renderer.setClearColor(new THREE.Color(0x000000));
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
+
+var camera = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+var scene = new THREE.Scene();
+
+var axes = new THREE.AxesHelper(20);
+scene.add(axes);
+
+const verticesOfTriangles = new Float32Array( [
+	0.0, 0.0,  0.0,
+	1.0, 1.0,  0.0,
+	0.0,  1.0,  0.0,
+
+	0.0,  0.0,  0.0,
+	1.0,  0.0,  0.0,
+	1.0, 1.0,  0.0,
+  
+  1.0, 0.0, 0.0,
+  1.0, 1.0, 1.0,
+  1.0,1.0,0.0,
+  
+  1.0,  0.0,  0.0,
+	1.0,  0.0,  1.0,
+	1.0, 1.0,  1.0,
+  
+  0.0,  0.0,  1.0,
+	0.0,  0.0,  0.0,
+	0.0, 1.0,  0.0,
+  
+  0.0,  0.0,  1.0,
+	0.0,  1.0,  0.0,
+	0.0, 1.0,  1.0,
+  
+  0.0,  1.0,  0.0,
+	1.0,  1.0,  0.0,
+	1.0, 1.0,  1.0,
+  
+  0.0,  1.0,  0.0,
+	1.0,  1.0,  1.0,
+	0.0, 1.0,  1.0,
+  
+  1.0,  0.0,  1.0,
+	0.0,  0.0,  1.0,
+	0.0, 1.0,  1.0,
+  
+  1.0,  0.0,  1.0,
+	0.0,  1.0,  1.0,
+	1.0, 1.0,  1.0,
+  
+  0.0,  0.0,  1.0,
+	1.0,  0.0,  1.0,
+	1.0, 0.0,  0.0,
+  
+  0.0,  0.0,  1.0,
+	1.0,  0.0,  0.0,
+	0.0, 0.0,  0.0
+
+] );
+
+const geometry = new THREE.BufferGeometry();
+geometry.setAttribute( 'position', new THREE.BufferAttribute( verticesOfTriangles, 3 ) );
+
+const wireframe = new THREE.WireframeGeometry( geometry );
+const line = new THREE.LineSegments( wireframe );
+line.material.depthTest = false;
+line.material.opacity = .75;
+line.material.transparent = true;
+line.position.set(0,0,0); 
+scene.add(line);
+
+camera.position.set(5, 5, 5);
+
+var controls = new OrbitControls (camera, renderer.domElement);
+
+var animate = function(){
+	requestAnimationFrame(animate);
+	renderer.render( scene, camera );
+  controls.update();
+}
+
+animate();
+
+
+
+
