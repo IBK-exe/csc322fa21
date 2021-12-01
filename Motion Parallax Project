@@ -1,0 +1,144 @@
+HTML
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+Javascript 1.7 + jQuery (edge)
+var 
+randColor1,
+randColor2,
+randColor3,
+rand;
+
+function setup() {
+  createCanvas(700,700);
+  randColor1 = color(Math.floor(Math.random()*255),Math.floor(Math.random()*255),Math.floor(Math.random()*255));
+  randColor2 = color(Math.floor(Math.random()*255),Math.floor(Math.random()*255),Math.floor(Math.random()*255));
+  randColor3 = color(Math.floor(Math.random()*255),Math.floor(Math.random()*255),Math.floor(Math.random()*255));
+  x = 700/2;
+  y = 700;
+	
+}
+	
+function draw() {
+
+  var 
+  tan = color(208, 219, 175), 
+  lightBlue = color(175, 215, 219),
+  darkBlue = color(26, 18, 112),
+  green = color(96, 156, 70),
+  yellow = color(255, 242, 0),
+  pink = color(250, 130, 224),
+  lightPink = color(250, 162, 231),
+  lightGreen = color(154, 245, 118),
+  white = color(255, 255, 255),
+  black = color(0, 0, 0);
+  
+  var 
+  layer1 = [((mouseX-(700/2))/100),((mouseY-(700/2))/100)],
+  layer2 = [((mouseX-(700/2))/50),((mouseY-(700/2))/50)],
+  layer3 = [((mouseX-(700/2))/25),((mouseY-(700/2))/25)],
+  layer4 = [((mouseX-(700/2))/12),((mouseY-(700/2))/12)];
+  
+  background(darkBlue);
+
+//hills 
+fill(randColor1);
+ arc(layer2[0], layer2[1]+600, 1000, 1000, PI, TWO_PI);
+ fill(randColor2);
+  arc(layer2[0] + 500, layer2[1]+750, 1000, 1000, PI, TWO_PI);
+  fill(randColor3);
+   arc(layer2[0] + 1000, layer2[1]+570, 1000, 1000, PI, TWO_PI);
+
+//moon 
+  strokeWeight(1);
+  fill(yellow);
+  ellipse(layer1[0]+ 600, layer1[1], 150);
+  
+  strokeWeight(0);
+  fill(darkBlue);
+  ellipse(layer1[0]+ 580, layer1[1], 150);
+  
+  
+//pokecenter 
+strokeWeight(1);
+  fill(lightBlue);
+  rect(layer4[0],layer4[1]+400, 400, 200);
+  
+  fill(lightPink);
+  rect(layer4[0],layer4[1]+250, 400, 90);
+ 
+  fill(pink);
+  rect(layer4[0] - 25,layer4[1]+330, 450, 90);
+  
+  fill(white);
+  ellipse(layer4[0] + 200, layer4[1] + 380, 150);
+  
+  fill(black);
+  ellipse(layer4[0] + 200, layer4[1] + 380, 75);
+  rect(layer4[0] + 125,layer4[1]+380, 150, 10);
+  
+  fill(white);
+  ellipse(layer4[0] + 200, layer4[1] + 380, 40);
+  
+  fill(black);
+  rect(layer4[0] + 150,layer4[1]+455, 100, 100);
+  
+//land 
+  fill(green);
+  rect(layer4[0] - 700,layer4[1]+(550), 2000, 700);
+
+//grass
+ fill(tan);
+  var num = 700/4;
+  for (i=0;i<num;i++) 
+  {
+    rect(i*((700/(500/700))/num)+layer4[0]-(700/5),layer4[1]+(700/(500/375)),(700/(500/700))/(2*num),(700/20));
+  }
+  
+//chancey 
+fill(pink);
+
+  ellipse(layer4[0]+655,layer4[1]+511, 65, 10);
+  ellipse(layer4[0]+545,layer4[1]+511, 65, 10);
+  
+ellipse(layer4[0]+665,layer4[1]+521, 65, 10);
+  ellipse(layer4[0]+535,layer4[1]+521, 65, 10);
+  
+  ellipse(layer4[0]+685,layer4[1]+531, 65, 10);
+  ellipse(layer4[0]+515,layer4[1]+531, 65, 10);
+  
+
+  fill(lightPink);
+  ellipse(layer4[0]+600,layer4[1]+550, 150, 180);
+  
+  fill(white);
+  ellipse(layer4[0]+600,layer4[1]+580, 50, 60);
+  fill(pink);
+  ellipse(layer4[0]+565,layer4[1]+641, 65, 10);
+  ellipse(layer4[0]+635,layer4[1]+641, 65, 10);
+   
+  fill(black);
+  ellipse(layer4[0]+610,layer4[1]+510, 10);
+  ellipse(layer4[0]+560,layer4[1]+510, 10);
+  
+  fill(lightPink);
+ arc(layer4[0] + 585, layer4[1]+ 520, 20, 20, TWO_PI, PI);
+ strokeWeight(0);
+ fill(pink);
+ arc(layer4[0] +600, layer4[1]+ 585,55, 55, TWO_PI, PI);
+ 
+// waddling eggs
+  strokeWeight(1);
+  fill(white);
+  ellipse(layer4[0]+x-45, layer4[1] + y + 295, 50, 65);
+  ellipse(layer4[0]+x, layer4[1] + y + 290, 50, 65);
+  ellipse(layer4[0]+x+45, layer4[1] + y + 300, 50, 65);
+  
+ ellipse(layer4[0]+x-200, layer4[1] + y + 300, 50, 65);
+ 
+  x = x + 1;
+  y = 400 + random(-2, 2);
+ 
+  if (x > 800) {
+  x = -100;
+  }
+}
